@@ -48,145 +48,165 @@
   }
 }
 
-    /* General reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      color: #111;
-      text-align: center;
-    }
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
 
-    /* Logo section */
-    header {
-      width: 100%;
-      padding: 2rem 0;
-      border-bottom: 1px solid #ccc;
-    }
+/* Logo section */
+header {
+  width: 100%;
+  padding: 2rem 0;
+  border-bottom: 1px solid #ccc;
+}
 
-    header img.logo {
-      max-width: 200px; /* adjust size as needed */
-      height: auto;
-      display: block;
-      margin: 0 auto; /* centers it */
-    }
+header img.logo {
+  max-width: 200px; /* adjust size as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto; /* centers it */
+}
 
-    /* Navigation */
-    nav {
-      display: flex;
-      justify-content: center;
-      border-bottom: 1px solid #ccc;
-      width: 100%;
-      max-width: 900px;
-    }
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  max-width: 900px;
+}
 
-    nav button {
-      flex: 1;
-      padding: 1rem;
-      border: none;
-      background: none;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
+nav button {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
 
-    nav button:hover,
-    nav button.active {
-      background: #f0f0f0;
-      color: #000;
-    }
+nav button:hover,
+nav button.active {
+  background: #f0f0f0;
+  color: #000;
+}
 
-    /* Content area */
-    main {
-      width: 100%;
-      max-width: 900px;
-      padding: 2rem;
-    }
+/* Content area */
+main {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+}
 
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
 
-    /* Contact form styling */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-    }
+/* Services grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
 
-    form label {
-      font-weight: bold;
-    }
+.service {
+  border: 2px solid #000;
+  padding: 1rem;
+}
 
-    form input,
-    form textarea {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      width: 100%;
-    }
+.service img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
 
-    form button {
-      padding: 0.8rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      background: #111;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+/* Contact form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
 
-    form button:hover {
-      background: #333;
-    }
+form label {
+  font-weight: bold;
+}
 
-    /* Success / error messages */
-    .form-status {
-      margin-top: 1rem;
-      font-size: 1rem;
-      font-weight: bold;
-      text-align: center;
-    }
-    .success {
-      color: green;
-    }
-    .error {
-      color: red;
-    }
+form input,
+form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
 
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      nav button {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-      }
-    }
+form button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-    @media (max-width: 480px) {
-      nav {
-        flex-direction: column;
-      }
-      nav button {
-        border-top: 1px solid #ccc;
-      }
-    }
+form button:hover {
+  background: #333;
+}
+
+/* Success / error messages */
+.form-status {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  nav button {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+  }
+  nav button {
+    border-top: 1px solid #ccc;
+  }
+}
   </style>
 </head>
 <body>
@@ -209,7 +229,26 @@
 
   <script>
     const content = {
-      services: "<p>Welcome! This is the Services section. Replace this text with your own content.</p>",
+      services: `
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service">
+            <h3 style="color:black;">Supply Chain Logistics & Management</h3>
+            <img src="images/logistics.png" alt="Supply Chain Logistics">
+            <p style="color:black;">We provide tailored logistics solutions designed to simplify and streamline the movement of goods across borders. From coordinating transportation to managing timelines, we help you save time, reduce costs, and keep your supply chain running reliably.</p>
+          </div>
+          <div class="service">
+            <h3 style="color:black;">Trade & Market Research Consulting</h3>
+            <img src="images/market.png" alt="Market Research">
+            <p style="color:black;">We offer detailed research to help businesses identify opportunities, understand local regulations, and navigate tariffs or trade barriers. Our consulting services equip you with clarity and confidence when entering or growing in international markets.</p>
+          </div>
+          <div class="service">
+            <h3 style="color:black;">Innovation & Product Development Support</h3>
+            <img src="images/innovation.png" alt="Innovation Support">
+            <p style="color:black;">We assist entrepreneurs and businesses in bringing innovative concepts to life by connecting them with manufacturers, sourcing materials, and guiding development. From prototype to production, we bridge your vision with the resources to make it real.</p>
+          </div>
+        </div>
+      `,
       brands: "<p>Here you can showcase the brands you work with.</p>",
       sponsors: "<p>This section highlights your sponsors or partners.</p>",
       about: `
@@ -232,7 +271,6 @@
     </div>
   </div>
 `,
-
       contact: `
         <h2>Contact Us</h2>
         <form id="contact-form">
@@ -301,6 +339,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
