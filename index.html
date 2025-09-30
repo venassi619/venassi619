@@ -250,7 +250,67 @@
   </main>
 
   <script>
-    const content = { /* your existing content object stays the same */ };
+    const content = {
+      services: `
+        <h2>What We Offer</h2>
+        <div class="services-grid">
+          <div class="service">
+            <h3 style="color:black;">Supply Chain Logistics & Management</h3>
+            <img src="images/logistics.png" alt="Supply Chain Logistics">
+            <p style="color:black;">We provide tailored logistics solutions designed to simplify and streamline the movement of goods across borders. From coordinating transportation to managing timelines, we help you save time, reduce costs, and keep your supply chain running reliably.</p>
+          </div>
+          <div class="service">
+            <h3 style="color:black;">Trade & Market Research Consulting</h3>
+            <img src="images/market.png" alt="Market Research">
+            <p style="color:black;">We offer detailed research to help businesses identify opportunities, understand local regulations, and navigate tariffs or trade barriers. Our consulting services equip you with clarity and confidence when entering or growing in international markets.</p>
+          </div>
+          <div class="service">
+            <h3 style="color:black;">Innovation & Product Development Support</h3>
+            <img src="images/innovation.png" alt="Innovation Support">
+            <p style="color:black;">We assist entrepreneurs and businesses in bringing innovative concepts to life by connecting them with manufacturers, sourcing materials, and guiding development. From prototype to production, we bridge your vision with the resources to make it real.</p>
+          </div>
+        </div>
+      `,
+      brands: "<p>Here you can showcase the brands you work with.</p>",
+      sponsors: "<p>This section highlights your sponsors or partners.</p>",
+      about: `
+        <h2>Founders</h2>
+        <div class="founders">
+          <div class="founder">
+            <img src="images/tony.jpeg" alt="Founder 1">
+            <div class="founder-text">
+              <h3>Tony Walk</h3>
+              <p>A veteran entrepreneur and business leader with over 40 years of experience in manufacturing, electronics, and aerospace. A UCLA graduate with a B.A. in Business Administration and Finance and an MBA, he has founded and grown multiple companies, taking start-ups from zero to multimillion-dollar success. He lead Mil-Interconnect, Inc., a manufacturer of specialized connector contacts, and previously served as CEO of American Custom Components, which he took public within three years. Throughout his career, he has built strong teams, developed innovative products, and secured major contracts with clients like the U.S. Department of Defense, Boeing, and Lockheed Martin. Known for his strategic vision and hands-on leadership, he turns opportunities into thriving, profitable businesses.</p>
+            </div>
+          </div>
+
+          <div class="founder">
+            <img src="images/luis.jpg" alt="Founder 2">
+            <div class="founder-text">
+              <h3>Luis Sabori</h3>
+              <p>A proud UC Santa Barbara graduate, Luis has built a diverse career in nonprofit work, small business development, and freelance web development. Early nonprofit internships honed his skills in project management and community engagement, while working with small businesses provided hands-on experience in entrepreneurship. As a freelance web developer, he has strengthened his technical expertise and managed projects independently. Today, Luis is focused on building a company that helps individuals and families become more self-sufficient, driven by a passion for creating practical solutions that make a real impact.</p>
+            </div>
+          </div>
+        </div>
+      `,
+      contact: `
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="_replyto" placeholder="Your email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+        <div id="form-status" class="form-status"></div>
+      `
+    };
+
     const tabs = document.querySelectorAll(".tab");
     const contentArea = document.getElementById("content");
 
@@ -258,13 +318,46 @@
       tab.addEventListener("click", () => {
         tabs.forEach(btn => btn.classList.remove("active"));
         tab.classList.add("active");
+
         const selected = tab.getAttribute("data-content");
         contentArea.innerHTML = content[selected];
-        if (selected === "contact") setupForm();
+
+        if (selected === "contact") {
+          setupForm();
+        }
       });
     });
 
-    function setupForm() { /* your existing form JS stays the same */ }
+    function setupForm() {
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        status.textContent = "Sending...";
+        status.className = "form-status";
+
+        try {
+          const response = await fetch("https://formspree.io/f/xeorqqoz", {
+            method: "POST",
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = "Thanks! Your message has been sent.";
+            status.classList.add("success");
+            form.reset();
+          } else {
+            status.textContent = "Oops! Something went wrong. Please try again.";
+            status.classList.add("error");
+          }
+        } catch (err) {
+          status.textContent = "Network error. Please check your connection.";
+          status.classList.add("error");
+        }
+      });
+    }
   </script>
 </body>
 </html>
