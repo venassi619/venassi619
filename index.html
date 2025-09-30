@@ -119,7 +119,7 @@
     <h1>My Responsive Website</h1>
   </header>
   <nav>
-    <button data-tab="services" class="active">Services</button>
+    <button data-tab="services">Services</button>
     <button data-tab="brands">Brands</button>
     <button data-tab="sponsors">Sponsors</button>
     <button data-tab="about">About Us</button>
@@ -182,7 +182,8 @@
     function updateContent(tab) {
       document.getElementById("content").innerHTML = content[tab] || "";
       document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
-      document.querySelector(`nav button[data-tab="${tab}"]`).classList.add("active");
+      const activeBtn = document.querySelector(`nav button[data-tab="${tab}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
 
       if (tab === "contact") {
         const form = document.getElementById("contactForm");
