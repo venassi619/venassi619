@@ -76,11 +76,10 @@
   </nav>
 
   <main id="content">
-    <p>Welcome! This is the Services section. Replace this text with your own content.</p>
+    <!-- Content will be injected here -->
   </main>
 
   <script>
-    // Use standard strings concatenation to avoid GitHub Pages undefined issue
     const content = {};
     content.services = '<h2>What We Offer</h2>' +
       '<div class="services-grid">' +
@@ -107,9 +106,13 @@
       '</form>' +
       '<div id="form-status" class="form-status"></div>';
 
-    // Tab functionality
     const tabs = document.querySelectorAll(".tab");
     const contentArea = document.getElementById("content");
+
+    // Load default (services) content immediately on page load
+    document.addEventListener("DOMContentLoaded", function() {
+      contentArea.innerHTML = content.services;
+    });
 
     tabs.forEach(function(tab){
       tab.addEventListener("click", function(){
@@ -121,7 +124,6 @@
       });
     });
 
-    // Contact form
     function setupForm(){
       const form = document.getElementById("contact-form");
       if(!form) return;
