@@ -253,7 +253,7 @@
 </head>
 <body>
   <header>
-    <img src="images/7.png" alt="Company Logo" class="logo">
+    <img src="images/7.png" alt="Company Logo" class="logo" loading="lazy">
   </header>
 
   <nav>
@@ -269,7 +269,7 @@
   </main>
 
   <script>
-    // Content (kept exactly as your original, with only the gallery link added)
+    // Content (kept as yours, with the gallery link inside Brands)
     const content = {};
 
     content.services =
@@ -277,36 +277,33 @@
       '<div class="services-grid">' +
         '<div class="service">' +
           '<h3>Supply Chain Logistics & Management</h3>' +
-          '<img src="images/logistics.png" alt="Supply Chain Logistics">' +
+          '<img src="images/logistics.png" alt="Supply Chain Logistics" loading="lazy">' +
           '<p>We provide tailored logistics solutions designed to simplify and streamline the movement of goods across borders. From coordinating transportation to managing timelines, we help you save time, reduce costs, and keep your supply chain running reliably.</p>' +
         '</div>' +
         '<div class="service">' +
           '<h3>Trade & Market Research Consulting</h3>' +
-          '<img src="images/market.png" alt="Market Research">' +
+          '<img src="images/market.png" alt="Market Research" loading="lazy">' +
           '<p>We offer detailed research to help businesses identify opportunities, understand local regulations, and navigate tariffs or trade barriers. Our consulting services equip you with clarity and confidence when entering or growing in international markets.</p>' +
         '</div>' +
         '<div class="service">' +
           '<h3>Innovation & Product Development Support</h3>' +
-          '<img src="images/innovation.png" alt="Innovation Support">' +
+          '<img src="images/innovation.png" alt="Innovation Support" loading="lazy">' +
           '<p>We assist entrepreneurs and businesses in bringing innovative concepts to life by connecting them with manufacturers, sourcing materials, and guiding development. From prototype to production, we bridge your vision with the resources to make it real.</p>' +
         '</div>' +
       '</div>';
 
     content.brands =
-      '<div id="brands-original">' + /* wrap original brands view so we can toggle it */ 
+      '<div id="brands-original">' +
       '<section class="brands-section">' +
         '<div class="brand-top">' +
           '<div class="brand-column brand-image">' +
-            '<img src="images/brand-sample.jpg" alt="Brand image">' +
+            '<img src="images/brand-sample.jpg" alt="Brand image" loading="lazy">' +
           '</div>' +
           '<div class="brand-column brand-text">' +
             '<div class="inner">' +
-              '<h2></h2>' +
-              '<p>EcoVibe is a clothing brand dedicated to raising awareness about endangered species around the world. Our mission is to combine style with purpose, creating apparel that sparks conversation and inspires action to protect wildlife. A significant portion of our profits is donated to NGOs working to preserve the survival of these species, and we aim to partner with zoos globally to amplify our impact. You can also watch a video below to see the factory where our shirts are carefully made. We’re seeking sponsors and collaborators who share our vision of promoting environmental awareness and making a tangible difference for endangered animals. By supporting EcoVibe, you’re not just buying clothing, you’re joining a movement to protect our planet’s most vulnerable creatures. </p>' +
-
-              /* ✅ Only addition inside original content: the link */
+              '<h2>EcoVibe</h2>' +
+              '<p>EcoVibe is a clothing brand dedicated to raising awareness about endangered species around the world. Our mission is to combine style with purpose, creating apparel that sparks conversation and inspires action to protect wildlife. A significant portion of our profits is donated to NGOs working to preserve the survival of these species, and we aim to partner with zoos globally to amplify our impact. You can also watch a video below to see the factory where our shirts are carefully made. We’re seeking sponsors and collaborators who share our vision of promoting environmental awareness and making a tangible difference for endangered animals. By supporting EcoVibe, you’re not just buying clothing, you’re joining a movement to protect our planet’s most vulnerable creatures.</p>' +
               '<p><a href="#" id="open-gallery" style="font-weight:bold; text-decoration:underline; color:#000;">View Product Gallery</a></p>' +
-
             '</div>' +
           '</div>' +
         '</div>' +
@@ -319,20 +316,18 @@
       '</section>' +
       '</div>' +
 
-      /* ✅ Slideshow view (hidden until link clicked) */
       '<div id="brands-gallery" class="gallery-view">' +
-        '<img src="images/brand-sample.png" alt="Brand Logo" class="logo">' +
+        '<img src="images/brand-sample.png" alt="Brand Logo" class="logo" loading="lazy">' +
         '<div class="slideshow-container">' +
-          '<img class="slides" src="images/ecovibeshirts1.png" alt="Product 1">' +
-          '<img class="slides" src="images/ecovibeshirts2.png" alt="Product 2">' +
-          '<img class="slides" src="images/ecovibeshirts3.png" alt="Product 3">' +
-          '<img class="slides" src="images/ecovibeshirts4.png" alt="Product 4">' +
-          '<img class="slides" src="images/ecovibeshirts5.png" alt="Product 5">' +
-          '<img class="slides" src="images/ecovibeshirts6.png" alt="Product 6">' +
-          '<img class="slides" src="images/ecovibeshirts7.png" alt="Product 7">' +
-          '<img class="slides" src="images/ecovibeshirts8.png" alt="Product 8">' +
-          '<img class="slides" src="images/ecovibeshirts9.png" alt="Product 9">' +
-
+          '<img class="slides" src="images/ecovibeshirts1.png" alt="Product 1" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts2.png" alt="Product 2" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts3.png" alt="Product 3" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts4.png" alt="Product 4" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts5.png" alt="Product 5" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts6.png" alt="Product 6" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts7.png" alt="Product 7" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts8.png" alt="Product 8" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts9.png" alt="Product 9" loading="lazy">' +
           '<span class="prev" aria-label="Previous slide">&#10094;</span>' +
           '<span class="next" aria-label="Next slide">&#10095;</span>' +
         '</div>' +
@@ -340,7 +335,7 @@
         '<button class="back-btn" id="back-to-brands">Back to Brands</button>' +
       '</div>';
 
-    content.sponsors = '<h2 class="page-title">Sponsors</h2><p style="color:#000;">At EcoVibe, we believe lasting change is only possible through collaboration. We are seeking sponsors and partners from around the globe who share our passion for protecting endangered species and promoting environmental awareness. By collaborating with us, you’ll not only help expand our reach but also directly support NGOs and conservation programs dedicated to preserving wildlife. Together, we can create meaningful impact while building a community of conscious consumers and forward-thinking organizations. Join us in shaping a sustainable future—where style meets responsibility and every partnership helps protect our planet’s most vulnerable creatures..</p>';
+    content.sponsors = '<h2 class="page-title">Sponsors</h2><p style="color:#000;">At EcoVibe, we believe lasting change is only possible through collaboration. We are seeking sponsors and partners from around the globe who share our passion for protecting endangered species and promoting environmental awareness. By collaborating with us, you’ll not only help expand our reach but also directly support NGOs and conservation programs dedicated to preserving wildlife. Together, we can create meaningful impact while building a community of conscious consumers and forward-thinking organizations. Join us in shaping a sustainable future—where style meets responsibility and every partnership helps protect our planet’s most vulnerable creatures.</p>';
 
     content.about =
       '<h2 class="page-title">Founders</h2>' +
@@ -419,13 +414,37 @@
       });
     }
 
+    /* ===== Slideshow lifecycle control ===== */
+    let slideshowTimer = null;
+    let slidesInitialized = false;
+    let currentSlideIndex = 0;
+
+    function clearSlideshowTimer() {
+      if (slideshowTimer) {
+        clearInterval(slideshowTimer);
+        slideshowTimer = null;
+      }
+    }
+
     // Load content function
     function loadContent(tabName) {
       const key = tabName || 'services';
+
+      // If leaving Brands, make sure to stop slideshow
+      if (key !== 'brands') {
+        clearSlideshowTimer();
+        slidesInitialized = false;
+      }
+
       contentArea.innerHTML = content[key] || '<p style="color:#000;">Content not found.</p>';
       setActive(key);
+
       if (key === 'contact') setupContactForm();
       if (key === 'brands') setupGallerySwap(); // attach gallery swap handlers when Brands is loaded
+
+      // set focus to page title for a11y (if present)
+      const title = contentArea.querySelector('.page-title') || contentArea.querySelector('h2');
+      if (title) title.setAttribute('tabindex', '-1'), title.focus();
     }
 
     // Attach click listeners
@@ -433,8 +452,16 @@
       tab.addEventListener('click', function (e) {
         e.preventDefault();
         const name = getTabName(this) || 'services';
+        // update hash so Back button works
+        window.location.hash = name;
         loadContent(name);
       });
+    });
+
+    // Support browser back/forward to switch tabs
+    window.addEventListener('hashchange', () => {
+      const name = window.location.hash.replace('#','') || 'services';
+      loadContent(name);
     });
 
     // Gallery swap logic (replace content on Brands tab)
@@ -454,20 +481,27 @@
           e.preventDefault();
           original.style.display = 'none';
           gallery.style.display = 'flex';
-          initSlides(); // initialize slideshow once opened
+          if (!slidesInitialized) {
+            initSlides();
+            slidesInitialized = true;
+          } else {
+            // Ensure at least one slide shows when re-opening
+            showSlide(currentSlideIndex || 0);
+          }
         });
       }
       if (back) {
         back.addEventListener('click', function () {
           gallery.style.display = 'none';
           original.style.display = '';
+          clearSlideshowTimer();
         });
       }
     }
 
     // Simple looping slideshow with manual controls
     function initSlides() {
-      let index = 0;
+      currentSlideIndex = 0;
       const slides = Array.from(document.getElementsByClassName('slides'));
       const prev = document.querySelector('.prev');
       const next = document.querySelector('.next');
@@ -475,16 +509,39 @@
 
       function show(n) {
         slides.forEach(s => s.style.display = 'none');
-        index = (n + slides.length) % slides.length;
-        slides[index].style.display = 'block';
+        currentSlideIndex = (n + slides.length) % slides.length;
+        slides[currentSlideIndex].style.display = 'block';
       }
 
-      prev.onclick = () => show(index - 1);
-      next.onclick = () => show(index + 1);
+      // Expose show for re-use
+      window.showSlide = show;
 
-      show(0); // show first image
-      // Loop automatically (optional). If you want only manual, comment the next line:
-      setInterval(() => show(index + 1), 4000);
+      prev.onclick = () => show(currentSlideIndex - 1);
+      next.onclick = () => show(currentSlideIndex + 1);
+
+      // Keyboard support when gallery visible
+      document.addEventListener('keydown', onArrowNav);
+
+      // Respect reduced motion: no auto-advance
+      const prefersNoMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      show(0);
+      clearSlideshowTimer();
+      if (!prefersNoMotion) {
+        slideshowTimer = setInterval(() => show(currentSlideIndex + 1), 4000);
+      }
+    }
+
+    function onArrowNav(e) {
+      const gallery = document.getElementById('brands-gallery');
+      if (!gallery || gallery.style.display === 'none') return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        window.showSlide(currentSlideIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        window.showSlide(currentSlideIndex + 1);
+      }
     }
 
     // Load default after listeners attached (fix double-click bug)
