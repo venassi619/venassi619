@@ -318,30 +318,7 @@
           '<span class="prev" aria-label="Previous slide">&#10094;</span>' +
           '<span class="next" aria-label="Next slide">&#10095;</span>' +
         '</div>' +
-        '<p class="gallery-description" id="gallery-msg"><label for="size">Select Size:</label>
-<select id="size">
-  <option value="small">Small</option>
-  <option value="medium">Medium</option>
-  <option value="large">Large</option>
-  <option value="xl">XL</option>
-</select>
-
-<button onclick="buyShirt()">Buy Now</button>
-
-<script>
-function buyShirt() {
-  const size = document.getElementById("size").value;
-
-  const links = {
-    small: "https://buy.stripe.com/6oU7sMgjP3YserfePCdby00",
-    medium: "https://buy.stripe.com/your_medium_link",
-    large: "https://buy.stripe.com/your_large_link",
-    xl: "https://buy.stripe.com/your_xl_link"
-  };
-
-  window.location.href = links[size];
-}
-</script>.</p>' +
+        '<p class="gallery-description" id="gallery-msg">Write your product details here.</p>' +
         '<button class="back-btn" id="back-to-brands">Back to Brands</button>' +
       '</div>';
 
@@ -574,4 +551,3 @@ function buyShirt() {
   </script>
 </body>
 </html>
-
