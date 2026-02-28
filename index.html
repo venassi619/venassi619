@@ -377,6 +377,8 @@
       '<form id="contact-form" action="https://formspree.io/f/xeorqqoz" method="POST">' +
         '<label for="name">Name</label>' +
         '<input id="name" name="name" type="text" placeholder="Your name" required />' +
+        '<label for="Phone Number">Phone Number</label>' +
+        '<input id="Phone Number" Phone Number="Phone Number" type="text" placeholder="Your Phone Number" required />' +
         '<label for="email">Email</label>' +
         '<input id="email" name="_replyto" type="email" placeholder="Your email" required />' +
         '<label for="message">Message</label>' +
@@ -461,7 +463,7 @@
 }
 
       const title = contentArea.querySelector('.page-title') || contentArea.querySelector('h2');
-      if (title) title.setAttribute('tabindex', '-1'), title.;
+      if (title) title.setAttribute('tabindex', '-1'), title.focus();
     }
 
     tabs.forEach(tab => {
@@ -610,6 +612,7 @@ function setupShirtForm() {
   </script>
 </body>
 </html>
+
 
 
 
