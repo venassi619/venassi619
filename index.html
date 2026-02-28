@@ -213,7 +213,9 @@
     /* CONTACT */
     form { display:flex; flex-direction:column; gap:10px; max-width:520px; margin:0 auto; text-align:left; }
     form label { font-weight:700; display:block; color:#000; }
-    input, textarea, select { padding:.8rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; width:100%; }
+    input, textarea {
+      padding:.8rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; width:100%;
+    }
     button[type="submit"] { background:#111; color:#fff; border:none; padding:.8rem; font-weight:700; border-radius:6px; cursor:pointer; }
     .form-status { margin-top:8px; text-align:center; font-weight:700; }
 
@@ -254,29 +256,26 @@
     <!-- content injected here -->
   </main>
 
-  <!-- Stripe.js -->
-  <script src="https://js.stripe.com/v3/"></script>
-
   <script>
-    /* ===== CONTENT OBJECT (EXISTING) ===== */
     const content = {};
+
     content.services =
       '<h2 class="page-title">Our Services</h2>' +
       '<div class="services-grid">' +
         '<div class="service">' +
           '<h3>Supply Chain Logistics & Management</h3>' +
           '<img src="images/logistics.png?v=2" alt="Supply Chain Logistics" loading="lazy">' +
-          '<p>We provide tailored logistics solutions designed to simplify and streamline the movement of goods across borders...</p>' +
+          '<p>We provide tailored logistics solutions designed to simplify and streamline the movement of goods across borders. From coordinating transportation to managing timelines, we help you save time, reduce costs, and keep your supply chain running reliably.</p>' +
         '</div>' +
         '<div class="service">' +
           '<h3>Trade & Market Research Consulting</h3>' +
           '<img src="images/market.png?v=2" alt="Market Research" loading="lazy">' +
-          '<p>We offer detailed research to help businesses identify opportunities, understand local regulations...</p>' +
+          '<p>We offer detailed research to help businesses identify opportunities, understand local regulations, and navigate tariffs or trade barriers. Our consulting services equip you with clarity and confidence when entering or growing in international markets.</p>' +
         '</div>' +
         '<div class="service">' +
           '<h3>Innovation & Product Development Support</h3>' +
           '<img src="images/innovation.png?v=2" alt="Innovation Support" loading="lazy">' +
-          '<p>We assist entrepreneurs and businesses in bringing innovative concepts to life...</p>' +
+          '<p>We assist entrepreneurs and businesses in bringing innovative concepts to life by connecting them with manufacturers, sourcing materials, and guiding development. From prototype to production, we bridge your vision with the resources to make it real.</p>' +
         '</div>' +
       '</div>';
 
@@ -290,7 +289,7 @@
           '<div class="brand-column brand-text">' +
             '<div class="inner">' +
               '<h2>EcoVibe</h2>' +
-              '<p>EcoVibe is a clothing brand dedicated to raising awareness about endangered species around the world...</p>' +
+              '<p>EcoVibe is a clothing brand dedicated to raising awareness about endangered species around the world. Our mission is to combine style with purpose, creating apparel that sparks conversation and inspires action to protect wildlife. A significant portion of our profits is donated to NGOs working to preserve the survival of these species, and we aim to partner with zoos globally to amplify our impact. You can also watch a video below to see the factory where our shirts are carefully made. We’re seeking sponsors and collaborators who share our vision of promoting environmental awareness and making a tangible difference for endangered animals. By supporting EcoVibe, you’re not just buying clothing, you’re joining a movement to protect our planet’s most vulnerable creatures.</p>' +
               '<p><a href="#" id="open-gallery" style="font-weight:bold; text-decoration:underline; color:#000;">View Product Gallery</a></p>' +
             '</div>' +
           '</div>' +
@@ -310,106 +309,299 @@
           '<img class="slides" src="images/ecovibeshirts1.png?v=2" alt="Product 1" loading="lazy">' +
           '<img class="slides" src="images/ecovibeshirts2.png?v=2" alt="Product 2" loading="lazy">' +
           '<img class="slides" src="images/ecovibeshirts3.png?v=2" alt="Product 3" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts4.png?v=2" alt="Product 4" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts5.png?v=2" alt="Product 5" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts6.png?v=2" alt="Product 6" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts7.png?v=2" alt="Product 7" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts8.png?v=2" alt="Product 8" loading="lazy">' +
+          '<img class="slides" src="images/ecovibeshirts9.png?v=2" alt="Product 9" loading="lazy">' +
           '<span class="prev" aria-label="Previous slide">&#10094;</span>' +
           '<span class="next" aria-label="Next slide">&#10095;</span>' +
         '</div>' +
-        '<p class="gallery-description" id="gallery-msg">S ($44.99) M ($44.99) L ($45.99) XL ($45.99).</p>' +
+       '<p class="gallery-description" id="gallery-msg">S ($44.99) M ($44.99) L ($45.99) XL ($45.99).</p>' +
+// START SHIRT SELECTION FORM
+'<form id="shirt-form" style="margin-top:1rem; text-align:left; max-width:320px; margin-left:auto; margin-right:auto;">' +
+  '<label>Shirt Type:</label>' +
+  '<select id="shirtType">' +
+    '<option value="classic">Classic</option>' +
+    '<option value="premium">Premium</option>' +
+  '</select>' +
 
-        <!-- STRIPE SHIRT FORM BELOW PRICING -->
-        '<form id="shirt-form">' +
-          '<label for="shirtType">Shirt Type:</label>' +
-          '<select id="shirtType" required>' +
-            '<option value="classic">Classic</option>' +
-            '<option value="premium">Premium</option>' +
-          '</select>' +
-          '<label for="shirtSize">Size:</label>' +
-          '<select id="shirtSize" required>' +
-            '<option value="S">S</option>' +
-            '<option value="M">M</option>' +
-            '<option value="L">L</option>' +
-          '</select>' +
-          '<label for="quantity">Quantity:</label>' +
-          '<input type="number" id="quantity" value="1" min="1" required>' +
-          '<button type="submit">Buy Now</button>' +
-        '</form>' +
+  '<label>Size:</label>' +
+  '<select id="shirtSize">' +
+    '<option value="S">Small</option>' +
+    '<option value="M">Medium</option>' +
+    '<option value="L">Large</option>' +
+  '</select>' +
 
-        '<button class="back-btn" id="back-to-brands">Back to Brands</button>' +
+  '<label>Quantity:</label>' +
+  '<input type="number" id="quantity" value="1" min="1" />' +
+
+  '<button type="submit" style="margin-top:8px; width:100%;">Checkout</button>' +
+'</form>' +
+// END SHIRT SELECTION FORM
+'<button class="back-btn" id="back-to-brands">Back to Brands</button>' +
       '</div>';
 
-    content.sponsors = '<h2 class="page-title">Sponsors</h2><p style="color:#000;">At EcoVibe, we believe lasting change is only possible through collaboration...</p>';
-    content.about = '<h2 class="page-title">Founders</h2>...'; // truncated for brevity
-    content.contact = '<h2 class="page-title">Contact Us</h2>...'; // truncated for brevity
+    content.sponsors = '<h2 class="page-title">Sponsors</h2><p style="color:#000;">At EcoVibe, we believe lasting change is only possible through collaboration. We are seeking sponsors and partners from around the globe who share our passion for protecting endangered species and promoting environmental awareness. By collaborating with us, you’ll not only help expand our reach but also directly support NGOs and conservation programs dedicated to preserving wildlife. Together, we can create meaningful impact while building a community of conscious consumers and forward-thinking organizations. Join us in shaping a sustainable future—where style meets responsibility and every partnership helps protect our planet’s most vulnerable creatures.</p>';
 
-    /* ===== TABS & LOAD LOGIC ===== */
-    const tabsArray = Array.from(document.querySelectorAll('nav button'));
-    function getTabName(btn){ return btn.dataset.content; }
-    function setActive(tabName){ tabsArray.forEach(t=>getTabName(t)===tabName ? t.classList.add('active') : t.classList.remove('active')); }
+    content.about =
+      '<h2 class="page-title">Founders</h2>' +
+      '<div class="founders">' +
+        '<div class="founder">' +
+          '<img src="images/tony.jpeg?v=2" alt="Tony Walk">' +
+          '<div class="founder-text">' +
+            '<h3>Tony Walk</h3>' +
+            '<p>A veteran entrepreneur and business leader with over 40 years of experience in manufacturing, electronics, and aerospace. A UCLA graduate with a B.A. in Business Administration and Finance and an MBA, he has founded and grown multiple companies, taking start-ups from zero to multimillion-dollar success. He led Mil-Interconnect, Inc., a manufacturer of specialized connector contacts, and previously served as CEO of American Custom Components, which he took public within three years. Throughout his career, he has built strong teams, developed innovative products, and secured major contracts with clients like the U.S. Department of Defense, Boeing, and Lockheed Martin. Known for his strategic vision and hands-on leadership, he turns opportunities into thriving, profitable businesses.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="founder">' +
+          '<img src="images/luis.jpg?v=2" alt="Luis Sabori">' +
+          '<div class="founder-text">' +
+            '<h3>Luis Sabori</h3>' +
+            '<p>A proud UC Santa Barbara graduate, Luis has built a diverse career in nonprofit work, small business development, and freelance web development. Early nonprofit internships honed his skills in project management and community engagement, while working with small businesses provided hands-on experience in entrepreneurship. As a freelance web developer, he has strengthened his technical expertise and managed projects independently. Today, Luis is focused on building a company that helps individuals and families become more self-sufficient, driven by a passion for creating practical solutions that make a real impact.</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
 
-    function setupContactForm(){ /* existing form logic */ }
+    content.contact =
+      '<h2 class="page-title">Contact Us</h2>' +
+      '<form id="contact-form" action="https://formspree.io/f/xeorqqoz" method="POST">' +
+        '<label for="name">Name</label>' +
+        '<input id="name" name="name" type="text" placeholder="Your name" required />' +
+        '<label for="email">Email</label>' +
+        '<input id="email" name="_replyto" type="email" placeholder="Your email" required />' +
+        '<label for="message">Message</label>' +
+        '<textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>' +
+        '<button type="submit">Send</button>' +
+      '</form>' +
+      '<div id="form-status" class="form-status"></div>';
 
-    let slideshowTimer=null, slidesInitialized=false, currentSlideIndex=0;
-    function clearSlideshowTimer(){ if(slideshowTimer){ clearInterval(slideshowTimer); slideshowTimer=null; } }
+    // DOM refs
+    const contentArea = document.getElementById('content');
+    const tabs = Array.from(document.querySelectorAll('nav button'));
 
-    function loadContent(tabName){
+    function getTabName(btn) {
+      return (btn && (btn.dataset.content || btn.dataset.tab || '')).toString();
+    }
+
+    function setActive(tabName) {
+      tabs.forEach(t => {
+        const name = getTabName(t);
+        if (name === tabName) t.classList.add('active'); else t.classList.remove('active');
+      });
+    }
+
+    // Contact form once
+    let contactInitialized = false;
+    function setupContactForm() {
+      if (contactInitialized) return;
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      contactInitialized = true;
+      const statusDiv = document.getElementById('form-status');
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (statusDiv) { statusDiv.textContent = 'Sending...'; statusDiv.className = 'form-status'; }
+        try {
+          const res = await fetch(form.action, {
+            method: form.method || 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            if (statusDiv) { statusDiv.textContent = 'Thanks! Your message has been sent.'; statusDiv.classList.add('success'); }
+            form.reset();
+          } else {
+            if (statusDiv) { statusDiv.textContent = 'Oops! Something went wrong. Please try again.'; statusDiv.classList.add('error'); }
+          }
+        } catch (err) {
+          if (statusDiv) { statusDiv.textContent = 'Network error. Please check your connection.'; statusDiv.classList.add('error'); }
+        }
+      });
+    }
+
+    /* ===== Slideshow lifecycle control ===== */
+    let slideshowTimer = null;
+    let slidesInitialized = false;
+    let currentSlideIndex = 0;
+
+    function clearSlideshowTimer() {
+      if (slideshowTimer) {
+        clearInterval(slideshowTimer);
+        slideshowTimer = null;
+      }
+    }
+
+    function loadContent(tabName) {
       const key = tabName || 'services';
-      if(key!=='brands'){ clearSlideshowTimer(); slidesInitialized=false; }
+
+      // Leaving Brands? stop slideshow.
+      if (key !== 'brands') {
+        clearSlideshowTimer();
+        slidesInitialized = false;
+      }
+
       contentArea.innerHTML = content[key] || '<p style="color:#000;">Content not found.</p>';
       setActive(key);
-      if(key==='contact') setupContactForm();
-      if(key==='brands') setupGallerySwap();
+
+      if (key === 'contact') setupContactForm();
+      if (key === 'brands') setupGallerySwap();
+
+      const title = contentArea.querySelector('.page-title') || contentArea.querySelector('h2');
+      if (title) title.setAttribute('tabindex', '-1'), title.focus();
     }
 
-    tabsArray.forEach(tab=>tab.addEventListener('click', e=>{ e.preventDefault(); loadContent(getTabName(tab)); window.location.hash=getTabName(tab); }));
-    window.addEventListener('hashchange', ()=>loadContent(window.location.hash.replace('#','')));
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function (e) {
+        e.preventDefault();
+        const name = getTabName(this) || 'services';
+        window.location.hash = name; // makes Back button work
+        loadContent(name);
+      });
+    });
 
-    function setupGallerySwap(){
-      const original=document.getElementById('brands-original');
-      const gallery=document.getElementById('brands-gallery');
-      if(!original||!gallery) return;
-      gallery.style.display='none';
-      const open=document.getElementById('open-gallery');
-      const back=document.getElementById('back-to-brands');
+    window.addEventListener('hashchange', () => {
+      const name = window.location.hash.replace('#','') || 'services';
+      loadContent(name);
+    });
 
-      if(open) open.addEventListener('click', e=>{ e.preventDefault(); original.style.display='none'; gallery.style.display='flex'; if(!slidesInitialized){ initSlides(); slidesInitialized=true; } else showSlide(currentSlideIndex||0); setupShirtForm(); });
+    function setupGallerySwap() {
+      const original = document.getElementById('brands-original');
+      const gallery = document.getElementById('brands-gallery');
+      if (!original || !gallery) return;
 
-      if(back) back.addEventListener('click', ()=>{ gallery.style.display='none'; original.style.display=''; clearSlideshowTimer(); });
+      gallery.style.display = 'none';
+
+      const open = document.getElementById('open-gallery');
+      const back = document.getElementById('back-to-brands');
+
+      if (open) {
+        open.addEventListener('click', function (e) {
+          e.preventDefault();
+          original.style.display = 'none';
+          gallery.style.display = 'flex';
+          if (!slidesInitialized) {
+            initSlides();
+            slidesInitialized = true;
+          } else {
+            showSlide(currentSlideIndex || 0);
+          }
+        });
+      }
+      if (back) {
+        back.addEventListener('click', function () {
+          gallery.style.display = 'none';
+          original.style.display = '';
+          clearSlideshowTimer();
+        });
+      }
     }
 
-    function initSlides(){
-      const slides=Array.from(document.getElementsByClassName('slides'));
-      const prev=document.querySelector('.prev'); const next=document.querySelector('.next');
-      if(!slides.length||!prev||!next) return;
-      currentSlideIndex=0;
-      function show(n){ slides.forEach(s=>s.style.display='none'); currentSlideIndex=(n+slides.length)%slides.length; slides[currentSlideIndex].style.display='block'; }
-      window.showSlide=show;
-      prev.onclick=()=>show(currentSlideIndex-1); next.onclick=()=>show(currentSlideIndex+1);
-      document.addEventListener('keydown', e=>{ if(e.key==='ArrowLeft') show(currentSlideIndex-1); else if(e.key==='ArrowRight') show(currentSlideIndex+1); });
+    // Simple slideshow with guard rails
+    function initSlides() {
+      const slides = Array.from(document.getElementsByClassName('slides'));
+      const prev = document.querySelector('.prev');
+      const next = document.querySelector('.next');
+      const msg  = document.getElementById('gallery-msg');
+
+      if (!slides.length) {
+        if (msg) msg.textContent = 'No slides found. Check your image filenames/paths.';
+        console.warn('Slideshow: no .slides images found in the DOM.');
+        return;
+      }
+      // Log missing images (404) to help debugging on GitHub Pages
+      slides.forEach(img => {
+        img.addEventListener('error', () => {
+          console.error('Image failed to load:', img.getAttribute('src'));
+          if (msg) msg.textContent = 'Some images failed to load. Check console and file names (case-sensitive).';
+        });
+      });
+
+      if (!prev || !next) {
+        console.warn('Slideshow controls not found.');
+        return;
+      }
+
+      currentSlideIndex = 0;
+
+      function show(n) {
+        slides.forEach(s => s.style.display = 'none');
+        currentSlideIndex = (n + slides.length) % slides.length;
+        slides[currentSlideIndex].style.display = 'block';
+      }
+      window.showSlide = show;
+
+      prev.onclick = () => show(currentSlideIndex - 1);
+      next.onclick = () => show(currentSlideIndex + 1);
+
+      document.addEventListener('keydown', onArrowNav);
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       show(0);
-      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) slideshowTimer=setInterval(()=>show(currentSlideIndex+1),4000);
+      clearSlideshowTimer();
+      if (!reduceMotion) {
+        slideshowTimer = setInterval(() => show(currentSlideIndex + 1), 4000);
+      }
     }
 
-    /* ===== STRIPE CHECKOUT ===== */
-    async function handleStripeCheckout(event){
-      event.preventDefault();
-      const type=document.getElementById('shirtType').value;
-      const size=document.getElementById('shirtSize').value;
-      const quantity=parseInt(document.getElementById('quantity').value)||1;
-
-      const priceMap={ 'classic':{'S':'price_1ClassicS','M':'price_1ClassicM','L':'price_1ClassicL'}, 'premium':{'S':'price_1PremiumS','M':'price_1PremiumM','L':'price_1PremiumL'} };
-      const selectedPriceId = priceMap[type][size];
-      if(!selectedPriceId){ alert('Invalid selection'); return; }
-
-      const stripe=Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'); // replace with your public key
-      stripe.redirectToCheckout({ lineItems:[{price:selectedPriceId, quantity}], mode:'payment', successUrl:window.location.href, cancelUrl:window.location.href })
-        .then(result=>{ if(result.error) alert(result.error.message); });
+    function onArrowNav(e) {
+      const gallery = document.getElementById('brands-gallery');
+      if (!gallery || gallery.style.display === 'none') return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        window.showSlide(currentSlideIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        window.showSlide(currentSlideIndex + 1);
+      }
     }
 
-    function setupShirtForm(){
-      const form=document.getElementById('shirt-form');
-      if(form) form.addEventListener('submit', handleStripeCheckout);
-    }
+    // Initial load
+    window.addEventListener('DOMContentLoaded', function () {
+      const params = new URLSearchParams(window.location.search);
+      const requested = params.get('tab') || window.location.hash.replace('#','');
+      if (requested && content.hasOwnProperty(requested)) {
+        loadContent(requested);
+      } else {
+        loadContent('services');
+      }
+    });
+    // Stripe checkout for the shirt form
+function setupShirtForm() {
+  const form = document.getElementById('shirt-form');
+  if (!form) return;
 
-    window.addEventListener('DOMContentLoaded', ()=>{ loadContent(window.location.hash.replace('#','')||'services'); });
+  const links = {
+    "classic-S": "https://buy.stripe.com/linkA",
+    "classic-M": "https://buy.stripe.com/linkB",
+    "classic-L": "https://buy.stripe.com/linkC",
+    "premium-S": "https://buy.stripe.com/linkD",
+    "premium-M": "https://buy.stripe.com/linkE",
+    "premium-L": "https://buy.stripe.com/linkF"
+  };
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const type = document.getElementById('shirtType').value;
+    const size = document.getElementById('shirtSize').value;
+    const quantity = document.getElementById('quantity').value;
+
+    const key = `${type}-${size}`;
+    let url = links[key];
+    if (quantity && quantity > 1) url += `?quantity=${quantity}`;
+
+    window.location.href = url;
+  });
+}
   </script>
+   <a href="https://buy.stripe.com/6oU7sMgjP3YserfePCdby00">
+  <button>Buy Now</button>
+</a>
 </body>
 </html>
+
+
+
