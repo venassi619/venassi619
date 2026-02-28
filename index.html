@@ -455,7 +455,10 @@
       setActive(key);
 
       if (key === 'contact') setupContactForm();
-      if (key === 'brands') setupGallerySwap();
+      if (key === 'brands') {
+  setupGallerySwap();
+  setTimeout(setupShirtForm, 0);
+}
 
       const title = contentArea.querySelector('.page-title') || contentArea.querySelector('h2');
       if (title) title.setAttribute('tabindex', '-1'), title.focus();
@@ -605,11 +608,9 @@ function setupShirtForm() {
   });
 }
   </script>
-   <a href="https://buy.stripe.com/6oU7sMgjP3YserfePCdby00">
-  <button>Buy Now</button>
-</a>
 </body>
 </html>
+
 
 
 
