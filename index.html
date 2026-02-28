@@ -319,38 +319,6 @@
           '<span class="next" aria-label="Next slide">&#10095;</span>' +
         '</div>' +
         '<p class="gallery-description" id="gallery-msg">S ($44.99) M ($44.99) L ($45.99) XL ($45.99).</p>' +
-      <script>
-  // Map product + size combos to Stripe payment links
-  const links = {
-    "classic-S": "https://buy.stripe.com/aFa28s4B7cuYaaZbDqdby01",
-    "classic-M": "https://buy.stripe.com/linkB",
-    "classic-L": "https://buy.stripe.com/linkC",
-    "premium-S": "https://buy.stripe.com/linkD",
-    "premium-M": "https://buy.stripe.com/linkE",
-    "premium-L": "https://buy.stripe.com/linkF"
-  };
-
-  // Form submission
-  document.getElementById("shirt-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const type = document.getElementById("shirtType").value;
-    const size = document.getElementById("shirtSize").value;
-    const quantity = document.getElementById("quantity").value;
-
-    // Choose the correct Stripe link
-    const key = `${type}-${size}`;
-    let url = links[key];
-
-    // Automatically redirect to Stripe with quantity if more than 1
-    if (quantity && quantity > 1) {
-      // Stripe Payment Links usually support adding quantity via URL
-      url += `?quantity=${quantity}`;
-    }
-
-    window.location.href = url;
-  });
-</script>
         '<button class="back-btn" id="back-to-brands">Back to Brands</button>' +
       '</div>';
 
@@ -584,6 +552,7 @@
 </a>
 </body>
 </html>
+
 
 
 
